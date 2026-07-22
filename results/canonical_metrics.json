@@ -1,0 +1,671 @@
+{
+  "descriptive_statistics": {
+    "bank_service": {
+      "count": 212.0,
+      "mean": 3.709433962264151,
+      "std": 1.054040144373118,
+      "min": 1.0,
+      "25%": 3.0,
+      "50%": 4.0,
+      "75%": 4.6,
+      "max": 5.0
+    },
+    "bank_trustsec": {
+      "count": 212.0,
+      "mean": 3.672169811320755,
+      "std": 1.1353138111114636,
+      "min": 1.0,
+      "25%": 3.0,
+      "50%": 4.0,
+      "75%": 4.5,
+      "max": 5.0
+    },
+    "bank_satisfaction": {
+      "count": 212.0,
+      "mean": 3.69811320754717,
+      "std": 1.0943180379423365,
+      "min": 1.0,
+      "25%": 3.0,
+      "50%": 4.0,
+      "75%": 5.0,
+      "max": 5.0
+    },
+    "bank_future": {
+      "count": 212.0,
+      "mean": 3.599056603773585,
+      "std": 1.0861467422019893,
+      "min": 1.0,
+      "25%": 3.0,
+      "50%": 4.0,
+      "75%": 4.0,
+      "max": 5.0
+    },
+    "mox_support": {
+      "count": 164.0,
+      "mean": 3.402439024390244,
+      "std": 1.1281099465361917,
+      "min": 1.0,
+      "25%": 3.0,
+      "50%": 4.0,
+      "75%": 4.0,
+      "max": 5.0
+    },
+    "ai_attitude": {
+      "count": 232.0,
+      "mean": 3.913793103448276,
+      "std": 1.002757803469892,
+      "min": 1.0,
+      "25%": 3.0,
+      "50%": 4.0,
+      "75%": 5.0,
+      "max": 5.0
+    }
+  },
+  "correlation_matrix": {
+    "bank_service": {
+      "bank_service": 1.0,
+      "bank_trustsec": 0.8527071790149435,
+      "bank_satisfaction": 0.3073550421095398,
+      "bank_future": 0.19002136195186078,
+      "mox_support": 0.15815084062263396,
+      "ai_attitude": 0.022414094556111378
+    },
+    "bank_trustsec": {
+      "bank_service": 0.8527071790149435,
+      "bank_trustsec": 1.0,
+      "bank_satisfaction": 0.26900688619801727,
+      "bank_future": 0.17923376572563302,
+      "mox_support": 0.1794749692815178,
+      "ai_attitude": -0.03422981324194321
+    },
+    "bank_satisfaction": {
+      "bank_service": 0.3073550421095398,
+      "bank_trustsec": 0.26900688619801727,
+      "bank_satisfaction": 1.0,
+      "bank_future": 0.7430032177424382,
+      "mox_support": 0.14062600332729797,
+      "ai_attitude": -0.025465745270456232
+    },
+    "bank_future": {
+      "bank_service": 0.19002136195186078,
+      "bank_trustsec": 0.17923376572563302,
+      "bank_satisfaction": 0.7430032177424382,
+      "bank_future": 1.0,
+      "mox_support": 0.0904045338201453,
+      "ai_attitude": -0.000919251440141579
+    },
+    "mox_support": {
+      "bank_service": 0.15815084062263396,
+      "bank_trustsec": 0.1794749692815178,
+      "bank_satisfaction": 0.14062600332729797,
+      "bank_future": 0.0904045338201453,
+      "mox_support": 1.0,
+      "ai_attitude": 0.031122094946484578
+    },
+    "ai_attitude": {
+      "bank_service": 0.022414094556111378,
+      "bank_trustsec": -0.03422981324194321,
+      "bank_satisfaction": -0.025465745270456232,
+      "bank_future": -0.000919251440141579,
+      "mox_support": 0.031122094946484578,
+      "ai_attitude": 1.0
+    }
+  },
+  "correlation_n_matrix": {
+    "bank_service": {
+      "bank_service": 212,
+      "bank_trustsec": 212,
+      "bank_satisfaction": 212,
+      "bank_future": 212,
+      "mox_support": 164,
+      "ai_attitude": 212
+    },
+    "bank_trustsec": {
+      "bank_service": 212,
+      "bank_trustsec": 212,
+      "bank_satisfaction": 212,
+      "bank_future": 212,
+      "mox_support": 164,
+      "ai_attitude": 212
+    },
+    "bank_satisfaction": {
+      "bank_service": 212,
+      "bank_trustsec": 212,
+      "bank_satisfaction": 212,
+      "bank_future": 212,
+      "mox_support": 164,
+      "ai_attitude": 212
+    },
+    "bank_future": {
+      "bank_service": 212,
+      "bank_trustsec": 212,
+      "bank_satisfaction": 212,
+      "bank_future": 212,
+      "mox_support": 164,
+      "ai_attitude": 212
+    },
+    "mox_support": {
+      "bank_service": 164,
+      "bank_trustsec": 164,
+      "bank_satisfaction": 164,
+      "bank_future": 164,
+      "mox_support": 164,
+      "ai_attitude": 164
+    },
+    "ai_attitude": {
+      "bank_service": 212,
+      "bank_trustsec": 212,
+      "bank_satisfaction": 212,
+      "bank_future": 212,
+      "mox_support": 164,
+      "ai_attitude": 232
+    }
+  },
+  "models": {
+    "Model A": {
+      "n": 212,
+      "df_model": 2.0,
+      "df_resid": 209.0,
+      "f_statistic_conventional_ols": 10.92405001085808,
+      "model_p_conventional_ols": 3.0738882947196886e-05,
+      "model_p_conventional_ols_formatted": "p<0.001",
+      "f_statistic_hc3": 8.712032838703774,
+      "model_p_hc3": 0.0002322078170466422,
+      "model_p_hc3_formatted": "p<0.001",
+      "r_squared": 0.09464275434652003,
+      "adj_r_squared": 0.08597904864648664,
+      "params": {
+        "const": {
+          "coef": 2.5079476180416265,
+          "se_conventional_ols": 0.2654218633228145,
+          "p_conventional_ols": 7.167352290232126e-18,
+          "p_conventional_ols_formatted": "p<0.001",
+          "ci95_conventional_ols": [
+            1.9847004080413506,
+            3.0311948280419023
+          ],
+          "robust_se_hc3": 0.30449901019730263,
+          "robust_p_hc3": 1.9208893523004148e-14,
+          "robust_p_hc3_formatted": "p<0.001",
+          "robust_ci95_hc3": [
+            1.907664523277108,
+            3.108230712806145
+          ]
+        },
+        "bank_service": {
+          "coef": 0.2966407472251743,
+          "se_conventional_ols": 0.13080642358901096,
+          "p_conventional_ols": 0.024364816397479214,
+          "p_conventional_ols_formatted": "p=0.024",
+          "ci95_conventional_ols": [
+            0.03877165032330998,
+            0.5545098441270386
+          ],
+          "robust_se_hc3": 0.13797955169704515,
+          "robust_p_hc3": 0.03271268887680878,
+          "robust_p_hc3_formatted": "p=0.033",
+          "robust_ci95_hc3": [
+            0.02463069289608194,
+            0.5686508015542666
+          ]
+        },
+        "bank_trustsec": {
+          "coef": 0.024453206624660218,
+          "se_conventional_ols": 0.12144238910448324,
+          "p_conventional_ols": 0.8406157101292662,
+          "p_conventional_ols_formatted": "p=0.841",
+          "ci95_conventional_ols": [
+            -0.21495582501718324,
+            0.2638622382665037
+          ],
+          "robust_se_hc3": 0.1289413734454614,
+          "robust_p_hc3": 0.8497706474592367,
+          "robust_p_hc3_formatted": "p=0.850",
+          "robust_ci95_hc3": [
+            -0.2297391687294542,
+            0.27864558197877465
+          ]
+        }
+      },
+      "primary_inference": "HC3 robust standard errors, confidence intervals, and overall model test"
+    },
+    "Model B": {
+      "n": 212,
+      "df_model": 3.0,
+      "df_resid": 208.0,
+      "f_statistic_conventional_ols": 86.19314029471577,
+      "model_p_conventional_ols": 2.794779665302032e-36,
+      "model_p_conventional_ols_formatted": "p<0.001",
+      "f_statistic_hc3": 84.1025056851718,
+      "model_p_hc3": 1.1356817122262778e-35,
+      "model_p_hc3_formatted": "p<0.001",
+      "r_squared": 0.5542023700791405,
+      "adj_r_squared": 0.5477725965706666,
+      "params": {
+        "const": {
+          "coef": 0.9756596978164382,
+          "se_conventional_ols": 0.22137181517159804,
+          "p_conventional_ols": 1.675912613558237e-05,
+          "p_conventional_ols_formatted": "p<0.001",
+          "ci95_conventional_ols": [
+            0.539239628967613,
+            1.4120797666652636
+          ],
+          "robust_se_hc3": 0.2068440281942057,
+          "robust_p_hc3": 4.3882037172815576e-06,
+          "robust_p_hc3_formatted": "p<0.001",
+          "robust_ci95_hc3": [
+            0.5678802117264433,
+            1.3834391839064333
+          ]
+        },
+        "bank_satisfaction": {
+          "coef": 0.7500400062859275,
+          "se_conventional_ols": 0.048291663452851304,
+          "p_conventional_ols": 1.2527290258504284e-36,
+          "p_conventional_ols_formatted": "p<0.001",
+          "ci95_conventional_ols": [
+            0.6548361472373811,
+            0.8452438653344738
+          ],
+          "robust_se_hc3": 0.05016300581706648,
+          "robust_p_hc3": 8.264108439125636e-35,
+          "robust_p_hc3_formatted": "p<0.001",
+          "robust_ci95_hc3": [
+            0.6511469180426102,
+            0.8489330945292448
+          ]
+        },
+        "bank_trustsec": {
+          "coef": 0.04196263020834945,
+          "se_conventional_ols": 0.08479255692387513,
+          "p_conventional_ols": 0.6212030954221356,
+          "p_conventional_ols_formatted": "p=0.621",
+          "ci95_conventional_ols": [
+            -0.1252003552959284,
+            0.2091256157126273
+          ],
+          "robust_se_hc3": 0.09193688861874182,
+          "robust_p_hc3": 0.6485580036779449,
+          "robust_p_hc3_formatted": "p=0.649",
+          "robust_ci95_hc3": [
+            -0.13928493841115322,
+            0.22321019882785212
+          ]
+        },
+        "bank_service": {
+          "coef": -0.08206908504889698,
+          "se_conventional_ols": 0.09243852808915888,
+          "p_conventional_ols": 0.3756612498965552,
+          "p_conventional_ols_formatted": "p=0.376",
+          "ci95_conventional_ols": [
+            -0.26430560310646156,
+            0.10016743300866762
+          ],
+          "robust_se_hc3": 0.1021540771171046,
+          "robust_p_hc3": 0.42266917940777254,
+          "robust_p_hc3_formatted": "p=0.423",
+          "robust_ci95_hc3": [
+            -0.28345917318670644,
+            0.11932100308891247
+          ]
+        }
+      },
+      "primary_inference": "HC3 robust standard errors, confidence intervals, and overall model test"
+    },
+    "Model C": {
+      "n": 164,
+      "df_model": 3.0,
+      "df_resid": 160.0,
+      "f_statistic_conventional_ols": 2.5571110387371236,
+      "model_p_conventional_ols": 0.05713939192696905,
+      "model_p_conventional_ols_formatted": "p=0.057",
+      "f_statistic_hc3": 2.7524818811212044,
+      "model_p_hc3": 0.04445856055057947,
+      "model_p_hc3_formatted": "p=0.044",
+      "r_squared": 0.045752204468335944,
+      "adj_r_squared": 0.02786005830211724,
+      "params": {
+        "const": {
+          "coef": 2.2638583056434927,
+          "se_conventional_ols": 0.4426438736182542,
+          "p_conventional_ols": 8.901886363629385e-07,
+          "p_conventional_ols_formatted": "p<0.001",
+          "ci95_conventional_ols": [
+            1.389680229110006,
+            3.1380363821769794
+          ],
+          "robust_se_hc3": 0.44205385904715405,
+          "robust_p_hc3": 8.629457974525858e-07,
+          "robust_p_hc3_formatted": "p<0.001",
+          "robust_ci95_hc3": [
+            1.390845449806895,
+            3.1368711614800904
+          ]
+        },
+        "bank_satisfaction": {
+          "coef": 0.13321001563757365,
+          "se_conventional_ols": 0.0889074011267657,
+          "p_conventional_ols": 0.13602549552599336,
+          "p_conventional_ols_formatted": "p=0.136",
+          "ci95_conventional_ols": [
+            -0.04237334954329272,
+            0.30879338081844
+          ],
+          "robust_se_hc3": 0.10100893382249386,
+          "robust_p_hc3": 0.18912233421232977,
+          "robust_p_hc3_formatted": "p=0.189",
+          "robust_ci95_hc3": [
+            -0.0662726853424869,
+            0.3326927166176342
+          ]
+        },
+        "bank_trustsec": {
+          "coef": 0.15719509737124845,
+          "se_conventional_ols": 0.14547054892715156,
+          "p_conventional_ols": 0.2815023467281012,
+          "p_conventional_ols_formatted": "p=0.282",
+          "ci95_conventional_ols": [
+            -0.13009491663915565,
+            0.4444851113816526
+          ],
+          "robust_se_hc3": 0.15169515523106009,
+          "robust_p_hc3": 0.3016460751764419,
+          "robust_p_hc3_formatted": "p=0.302",
+          "robust_ci95_hc3": [
+            -0.1423879013391354,
+            0.45677809608163233
+          ]
+        },
+        "bank_service": {
+          "coef": 0.00902458380716148,
+          "se_conventional_ols": 0.15673979999181156,
+          "p_conventional_ols": 0.9541575335398368,
+          "p_conventional_ols_formatted": "p=0.954",
+          "ci95_conventional_ols": [
+            -0.3005210917108803,
+            0.3185702593252033
+          ],
+          "robust_se_hc3": 0.16780839634932276,
+          "robust_p_hc3": 0.9571782545139094,
+          "robust_p_hc3_formatted": "p=0.957",
+          "robust_ci95_hc3": [
+            -0.3223804799243484,
+            0.34042964753867133
+          ]
+        }
+      },
+      "primary_inference": "HC3 robust standard errors, confidence intervals, and overall model test"
+    },
+    "Moderation": {
+      "n": 212,
+      "df_model": 3.0,
+      "df_resid": 208.0,
+      "f_statistic_conventional_ols": 2.9556493523178284,
+      "model_p_conventional_ols": 0.03349786332270024,
+      "model_p_conventional_ols_formatted": "p=0.033",
+      "f_statistic_hc3": 2.4836063782654287,
+      "model_p_hc3": 0.06187076263367822,
+      "model_p_hc3_formatted": "p=0.062",
+      "r_squared": 0.04088658108761167,
+      "adj_r_squared": 0.02705321446868303,
+      "params": {
+        "const": {
+          "coef": 3.6026702635730987,
+          "se_conventional_ols": 0.07365399204366004,
+          "p_conventional_ols": 4.7049161436982033e-116,
+          "p_conventional_ols_formatted": "p<0.001",
+          "ci95_conventional_ols": [
+            3.457466230919853,
+            3.7478742962263443
+          ],
+          "robust_se_hc3": 0.07445185308300105,
+          "robust_p_hc3": 3.694716412441624e-115,
+          "robust_p_hc3_formatted": "p<0.001",
+          "robust_ci95_hc3": [
+            3.4558933000142136,
+            3.749447227131984
+          ]
+        },
+        "centered_bank_trustsec": {
+          "coef": 0.17874874771394716,
+          "se_conventional_ols": 0.06520729007256448,
+          "p_conventional_ols": 0.00665364512316166,
+          "p_conventional_ols_formatted": "p=0.007",
+          "ci95_conventional_ols": [
+            0.050196836076710716,
+            0.3073006593511836
+          ],
+          "robust_se_hc3": 0.06887102985617626,
+          "robust_p_hc3": 0.0101207687454306,
+          "robust_p_hc3_formatted": "p=0.010",
+          "robust_ci95_hc3": [
+            0.04297401248749902,
+            0.31452348294039534
+          ]
+        },
+        "centered_ai_attitude": {
+          "coef": -0.006980346501983162,
+          "se_conventional_ols": 0.0738152893650577,
+          "p_conventional_ols": 0.9247513466115995,
+          "p_conventional_ols_formatted": "p=0.925",
+          "ci95_conventional_ols": [
+            -0.15250236628495845,
+            0.1385416732809921
+          ],
+          "robust_se_hc3": 0.08319451469734038,
+          "robust_p_hc3": 0.9332135133515175,
+          "robust_p_hc3_formatted": "p=0.933",
+          "robust_ci95_hc3": [
+            -0.17099289617509156,
+            0.1570322031711252
+          ]
+        },
+        "interaction": {
+          "coef": 0.08827001359842736,
+          "se_conventional_ols": 0.06413498183251051,
+          "p_conventional_ols": 0.17020362870839936,
+          "p_conventional_ols_formatted": "p=0.170",
+          "ci95_conventional_ols": [
+            -0.03816791240974986,
+            0.21470793960660456
+          ],
+          "robust_se_hc3": 0.07594664827424859,
+          "robust_p_hc3": 0.24646030744094474,
+          "robust_p_hc3_formatted": "p=0.246",
+          "robust_ci95_hc3": [
+            -0.061453841007872725,
+            0.23799386820472745
+          ]
+        }
+      },
+      "primary_inference": "HC3 robust standard errors, confidence intervals, and overall model test"
+    }
+  },
+  "vif": {
+    "Model A": {
+      "bank_service": 3.664473924354055,
+      "bank_trustsec": 3.664473924354057
+    },
+    "Model B": {
+      "bank_satisfaction": 1.1045363637402685,
+      "bank_trustsec": 3.6651848044916076,
+      "bank_service": 3.7546453257099026
+    },
+    "Model C": {
+      "bank_satisfaction": 1.1045363637402685,
+      "bank_trustsec": 3.6651848044916076,
+      "bank_service": 3.7546453257099026
+    },
+    "Moderation": {
+      "centered_bank_trustsec": 1.0074894471387745,
+      "centered_ai_attitude": 1.0168379876699336,
+      "interaction": 1.022662304118844
+    }
+  },
+  "cronbach_alpha": {
+    "bank_service_q10_5_items": 0.9093455416473494,
+    "bank_trustsec_q10_2_items": 0.8180481903679961,
+    "q10_all_7_items": 0.9344599262489581
+  },
+  "mediation": {
+    "Mediation A exploratory bank_service_to_bank_trustsec_to_bank_future": {
+      "n": 212,
+      "x": "bank_service",
+      "mediator": "bank_trustsec",
+      "y": "bank_future",
+      "covariates": [],
+      "a_path": {
+        "coef": 0.9184567042703342,
+        "p": 3.868354143790786e-61,
+        "p_formatted": "p<0.001"
+      },
+      "b_path": {
+        "coef": 0.06030351345882129,
+        "p": 0.6280847568602911,
+        "p_formatted": "p=0.628"
+      },
+      "direct_effect": {
+        "coef": 0.14042334286453534,
+        "p": 0.2954672283528166,
+        "p_formatted": "p=0.295"
+      },
+      "indirect_effect": {
+        "coef": 0.05538616622731075,
+        "ci95_bootstrap": [
+          -0.16607500989764404,
+          0.2973234822183576
+        ],
+        "normal_approximation_p": 0.6380994499495971,
+        "normal_approximation_p_formatted": "p=0.638",
+        "primary_inference": "bootstrap confidence interval"
+      },
+      "total_effect": {
+        "coef": 0.19580950909184577,
+        "p": 0.0055077807841125296,
+        "p_formatted": "p=0.006"
+      },
+      "bootstrap_reps": 5000
+    },
+    "Mediation B adjusted bank_trustsec_to_bank_satisfaction_to_bank_future_cov_bank_service": {
+      "n": 212,
+      "x": "bank_trustsec",
+      "mediator": "bank_satisfaction",
+      "y": "bank_future",
+      "covariates": [
+        "bank_service"
+      ],
+      "a_path": {
+        "coef": 0.024453206624659884,
+        "p": 0.8406157101292684,
+        "p_formatted": "p=0.841"
+      },
+      "b_path": {
+        "coef": 0.7500400062859288,
+        "p": 1.2527290258504284e-36,
+        "p_formatted": "p<0.001"
+      },
+      "direct_effect": {
+        "coef": 0.04196263020834973,
+        "p": 0.6212030954221336,
+        "p_formatted": "p=0.621"
+      },
+      "indirect_effect": {
+        "coef": 0.018340883250471014,
+        "ci95_bootstrap": [
+          -0.15711834093768742,
+          0.2152483739254775
+        ],
+        "normal_approximation_p": 0.8475746345038866,
+        "normal_approximation_p_formatted": "p=0.848",
+        "primary_inference": "bootstrap confidence interval"
+      },
+      "total_effect": {
+        "coef": 0.06030351345882068,
+        "p": 0.6280847568602949,
+        "p_formatted": "p=0.628"
+      },
+      "bootstrap_reps": 5000
+    }
+  },
+  "mode": "canonical",
+  "run_metadata": {
+    "run_time_utc": "2026-07-22T11:16:00.359134+00:00",
+    "python_version": "3.13.5",
+    "platform": "Windows",
+    "random_seed": 20260325,
+    "libraries": {
+      "pandas": "3.0.0",
+      "numpy": "2.2.6",
+      "scipy": "1.17.1",
+      "statsmodels": "0.14.6"
+    },
+    "warnings": []
+  },
+  "input_file": {
+    "safe_path": "<private-input>",
+    "size_bytes": null
+  },
+  "variable_definitions": {
+    "bank_service": "Mean of five Q10 service-performance items; higher means stronger perceived service performance.",
+    "bank_trustsec": "Mean of Q10 security perception and perceived control; higher means stronger perceived trust/security/control.",
+    "bank_satisfaction": "Q11 satisfaction item; higher means greater satisfaction.",
+    "bank_future": "Q11 future use intention item; higher means stronger future use intention.",
+    "mox_support_raw": "Q16 original coding, where 1 means strongly support and 5 means strongly oppose.",
+    "mox_support": "Reverse-coded Q16 as 6 - mox_support_raw; higher means stronger support.",
+    "ai_attitude": "Q5 original coding: 1=very anxious/resistant, 2=somewhat uneasy, 3=neutral, 4=somewhat interested, 5=very excited."
+  },
+  "cleaning_rules": {
+    "duration": "Keep responses at or above the 5th percentile duration threshold.",
+    "attention": "Both attention checks must equal coding value 2.",
+    "privacy": "Raw responses and sensitive metadata are excluded from public outputs."
+  },
+  "sample_checks": {
+    "raw_n": 376,
+    "time_threshold_p05_seconds": 126,
+    "time_clean_n": 360,
+    "attention21_pass_n": 264,
+    "attention26_pass_n": 268,
+    "attention_both_pass_n": 240,
+    "quality_n": 232
+  },
+  "expected_validation": {
+    "raw_n": {
+      "expected": 376,
+      "observed": 376,
+      "match": true
+    },
+    "time_clean_n": {
+      "expected": 360,
+      "observed": 360,
+      "match": true
+    },
+    "quality_n": {
+      "expected": 232,
+      "observed": 232,
+      "match": true
+    },
+    "time_threshold_p05_seconds": {
+      "expected": 126,
+      "observed": 126,
+      "match": true
+    },
+    "attention21_pass_n": {
+      "expected": 264,
+      "observed": 264,
+      "match": true
+    },
+    "attention26_pass_n": {
+      "expected": 268,
+      "observed": 268,
+      "match": true
+    },
+    "attention_both_pass_n": {
+      "expected": 240,
+      "observed": 240,
+      "match": true
+    }
+  },
+  "validation_passed": true,
+  "efa_status": "Excluded from public main results because KMO/Bartlett/rotation validation was not completed."
+}

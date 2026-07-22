@@ -1,0 +1,8 @@
+﻿variable_name,meaning,coding_direction,range,used_for_modeling,sensitive_level
+bank_service,"Mean of Q10 reliability, ease of use, responsiveness, problem-solving ability, and natural interaction",higher = stronger perceived service performance,1-5,yes,derived aggregate
+bank_trustsec,Mean of Q10 security perception and perceived control,higher = stronger perceived trust/security/control,1-5,yes,derived aggregate
+bank_satisfaction,Q11 satisfaction item,higher = greater satisfaction,1-5,yes,derived item
+bank_future,Q11 future use intention item,higher = stronger future use intention,1-5,yes,derived item
+mox_support_raw,Q16 original coding,"1 = strongly support, 5 = strongly oppose",1-5,intermediate only,derived item
+mox_support,Reverse-coded Q16 as 6 - raw,higher = stronger support,1-5,yes,derived item
+ai_attitude,Q5 original coding,1 very anxious/resistant; 2 somewhat uneasy; 3 neutral; 4 somewhat interested; 5 very excited,1-5,moderation,derived item
