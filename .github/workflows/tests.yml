@@ -41,5 +41,18 @@ jobs:
       - name: Compile source
         run: python -m compileall -q src tests scripts
 
+      - name: Clean runtime bytecode
+        shell: python
+        run: |
+          from pathlib import Path
+          import shutil
+          for path in Path(".").rglob("__pycache__"):
+              shutil.rmtree(path)
+          for path in Path(".").rglob("*.pyc"):
+              path.unlink()
+          cache = Path(".pytest_cache")
+          if cache.exists():
+              shutil.rmtree(cache)
+
       - name: Validate release tree
         run: python scripts/validate_release_tree.py .
