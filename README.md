@@ -1,10 +1,10 @@
 # Mox Chatbot User Research
 
-A PolyU × HKMA IPMN Academic Project
+A PolyU ? HKMA IPMN Academic Project
 
 This is a student academic and industry project completed under the HKMA Industry Project Masters Network Scheme through The Hong Kong Polytechnic University. The analysis and recommendations represent the student contributors' work and do not constitute official statements or endorsements by HKMA, PolyU, or Mox Bank.
 
-This release-ready candidate contains a privacy-preserving analysis package for a team academic project about digital banking chatbot service quality. The project examines user perceptions and service-design considerations relating to digital banking chatbots, using Mox Bank as the project context. It does not include raw questionnaire exports, respondent-level records, respondent metadata, open-ended answers, original reports, or legacy figures.
+This repository contains a privacy-preserving analysis package for a team academic project about digital banking chatbot service quality. The project examines user perceptions and service-design considerations relating to digital banking chatbots, using Mox Bank as the project context. It does not include raw questionnaire exports, respondent-level records, respondent metadata, open-ended answers, original reports, or legacy figures.
 
 ## Programme Context
 
@@ -14,7 +14,7 @@ The repository documents the student contributors' research process, reproducibl
 
 ## Project Attribution
 
-This project was completed as a two-person academic collaboration by LIN Junyu and SHI. SHI has approved the public release of this repository and has requested surname-only attribution.
+This project was completed as a two-person academic collaboration by LIN Junyu and SHI.
 
 ## Personal Contribution
 
@@ -24,7 +24,7 @@ I independently completed the full data-processing workflow, including raw-data 
 
 The analytical framework, model selection, and model specifications were developed jointly through team discussions. The written report was co-authored, with the overall workload shared broadly between both contributors. Visualisation design and production were led by SHI.
 
-For the final presentation, I delivered the diagnostic and empirical-results section preceding the transition slide, “We found the disease. Now here is the treatment.” SHI delivered the subsequent recommendation, implementation, stakeholder, risk, and regulatory sections.
+For the final presentation, I delivered the diagnostic and empirical-results section preceding the transition slide, "We found the disease. Now here is the treatment." SHI delivered the subsequent recommendation, implementation, stakeholder, risk, and regulatory sections.
 
 ## Business Question
 
@@ -68,11 +68,7 @@ Canonical mode requires a private local questionnaire file:
 python src/run_analysis.py --mode canonical --input <private_questionnaire.xlsx> --output local_results/canonical
 ```
 
-Private provenance is not written by default. To create it for internal review only:
-
-```bash
-python src/run_analysis.py --mode canonical --input <private_questionnaire.xlsx> --output local_results/canonical --provenance-output <review_only/private_provenance.json>
-```
+Private provenance and optional input-file hash checks are available only through explicit command-line arguments. Do not commit private provenance files or questionnaire hashes.
 
 ## Directory Guide
 
@@ -80,50 +76,61 @@ python src/run_analysis.py --mode canonical --input <private_questionnaire.xlsx>
 - `notebooks`: reproducible notebook wrapper that runs demo mode by default.
 - `data`: data dictionary and synthetic example only.
 - `results`: canonical aggregate outputs and generated figures.
-- `docs`: methodology and portfolio-facing narrative.
-- `tests`: portable pytest checks for demo execution and public-repo cleanliness.
+- `docs`: methodology, limitations, construct map, and portfolio-facing narrative.
+- `tests`: portable pytest checks for demo execution, data contracts, figures, and public-repo cleanliness.
 - `scripts`: pre-packaging release-tree validation.
 
 ## Privacy And Sample Screening
 
 Canonical analysis requires a private local questionnaire file. Public outputs contain only derived variables, aggregate tables, model summaries, and synthetic demo data.
 
-![Sample screening](results/figures/01_sample_screening.png)
+<p align="center">
+  <img src="results/figures/01_sample_screening.png" alt="Sample screening" width="850">
+</p>
 
 Raw responses: 376. After duration screen: 360. Final quality sample: 232. The attention-check count is reported as an independent raw-sample count, not a funnel step.
 
 ## Variables
 
-- `bank_service`: mean of five Q10 service-performance items.
-- `bank_trustsec`: mean of Q10 security perception and perceived control.
-- `bank_satisfaction`: Q11 satisfaction.
-- `bank_future`: Q11 future use intention.
-- `mox_support`: reverse-coded Q16, larger means more support.
-- `ai_attitude`: Q5 from 1 very anxious/resistant to 5 very excited.
+| Variable | Definition | Scoring rule | Main-model role |
+|---|---|---|---|
+| `bank_service` | Q10 five-item service-quality composite | At least four items must be valid | Predictor |
+| `bank_security_control` | Q10 security perception and perceived control composite | Both items must be valid | Predictor / exploratory mediator / moderator construct |
+| `bank_satisfaction` | Q11 satisfaction single item | No cross-item imputation | Outcome in Model A; predictor in Models B and C |
+| `bank_trust_outcome` | Q11 trust single item | Supplementary descriptive item only | Not included in main models |
+| `bank_future` | Q11 future use intention single item | No cross-item imputation | Outcome in Model B and Moderation |
+| `mox_support` | Q16 reverse-coded support item | `6 - mox_support_raw` | Outcome in Model C |
+| `ai_attitude` | Q5 original coding | 1 very anxious/resistant to 5 very excited | Moderation predictor |
+
+`bank_security_control` and `bank_trust_outcome` are distinct constructs from different question blocks. They are not interchangeable and should not both be shortened to "trust."
 
 ## Main Results
 
 All primary coefficient p values, confidence intervals, and overall model tests use HC3 robust inference. Conventional OLS standard errors, confidence intervals, and p values remain in the full JSON and CSV outputs for transparency.
 
-![Correlation heatmap](results/figures/03_correlation_heatmap.png)
+<p align="center">
+  <img src="results/figures/03_correlation_heatmap.png" alt="Correlation heatmap" width="850">
+</p>
 
 The correlation heatmap uses pairwise-complete observations. Pairs involving `mox_support` have smaller effective sample sizes; see `results/tables/correlation_n_matrix.csv`.
 
-![Model B coefficients](results/figures/05_model_b_coef_ci.png)
+<p align="center">
+  <img src="results/figures/05_model_b_coef_ci.png" alt="Model B coefficient plot" width="850">
+</p>
 
-| Model | Dependent variable | n | R² | HC3 overall test | Core HC3 result | Boundary |
+| Model | Dependent variable | n | R? | HC3 overall test | Core HC3 result | Boundary |
 |---|---:|---:|---:|---|---|---|
-| A | bank_satisfaction | 212 | 0.095 | F=8.712, p<0.001 | bank_service coef=0.297, p=0.033; bank_trustsec coef=0.024, p=0.850 | Explanatory power is limited. |
+| A | bank_satisfaction | 212 | 0.095 | F=8.712, p<0.001 | bank_service coef=0.297, p=0.033; bank_security_control coef=0.024, p=0.850 | Explanatory power is limited. |
 | B | bank_future | 212 | 0.554 | F=84.103, p<0.001 | bank_satisfaction coef=0.750, p<0.001 | Association, not causal proof. |
 | C | mox_support | 164 | 0.046 | F=2.752, p=0.044 | individual HC3 predictor p values are p=0.189, p=0.302, and p=0.957 | Conventional OLS overall p is p=0.057; interpret cautiously. |
 
 ## Mediation
 
-Mediation A is exploratory because `bank_service` and `bank_trustsec` are highly related constructs, and construct separation still needs validation. Mediation B is reported as an adjusted exploratory model controlling for `bank_service` in both equations. Adjusted Mediation B indirect effect = 0.018; bootstrap 95% CI = [-0.157, 0.215]. Bootstrap confidence intervals are the primary inference. These models do not prove causality.
+Mediation A is exploratory because `bank_service` and `bank_security_control` are highly related constructs, and construct separation still needs validation. Mediation B is reported as an adjusted exploratory model controlling for `bank_service` in both equations. Adjusted Mediation B indirect effect = 0.018; bootstrap 95% CI = [-0.157, 0.215]. Bootstrap confidence intervals are the primary inference. These models do not prove causality.
 
 ## Why Legacy Results Were Replaced
 
-Earlier materials contained conflicting coefficients, mediation effects, and variable definitions. This package uses one canonical script, explicit variables, HC3 primary inference, validated sample screening, and a separate internal provenance file.
+Earlier materials contained conflicting coefficients, mediation effects, and variable definitions. This package uses one canonical script, explicit variables, HC3 primary inference, validated sample screening, and separated private provenance.
 
 ## License and Usage
 

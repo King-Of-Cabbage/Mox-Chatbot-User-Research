@@ -10,7 +10,7 @@
       "75%": 4.6,
       "max": 5.0
     },
-    "bank_trustsec": {
+    "bank_security_control": {
       "count": 212.0,
       "mean": 3.672169811320755,
       "std": 1.1353138111114636,
@@ -61,18 +61,30 @@
       "max": 5.0
     }
   },
+  "supplementary_descriptive_statistics": {
+    "bank_trust_outcome": {
+      "count": 212.0,
+      "mean": 3.4858490566037736,
+      "std": 1.1580289414521607,
+      "min": 1.0,
+      "25%": 3.0,
+      "50%": 4.0,
+      "75%": 4.0,
+      "max": 5.0
+    }
+  },
   "correlation_matrix": {
     "bank_service": {
       "bank_service": 1.0,
-      "bank_trustsec": 0.8527071790149435,
+      "bank_security_control": 0.8527071790149435,
       "bank_satisfaction": 0.3073550421095398,
       "bank_future": 0.19002136195186078,
       "mox_support": 0.15815084062263396,
       "ai_attitude": 0.022414094556111378
     },
-    "bank_trustsec": {
+    "bank_security_control": {
       "bank_service": 0.8527071790149435,
-      "bank_trustsec": 1.0,
+      "bank_security_control": 1.0,
       "bank_satisfaction": 0.26900688619801727,
       "bank_future": 0.17923376572563302,
       "mox_support": 0.1794749692815178,
@@ -80,7 +92,7 @@
     },
     "bank_satisfaction": {
       "bank_service": 0.3073550421095398,
-      "bank_trustsec": 0.26900688619801727,
+      "bank_security_control": 0.26900688619801727,
       "bank_satisfaction": 1.0,
       "bank_future": 0.7430032177424382,
       "mox_support": 0.14062600332729797,
@@ -88,7 +100,7 @@
     },
     "bank_future": {
       "bank_service": 0.19002136195186078,
-      "bank_trustsec": 0.17923376572563302,
+      "bank_security_control": 0.17923376572563302,
       "bank_satisfaction": 0.7430032177424382,
       "bank_future": 1.0,
       "mox_support": 0.0904045338201453,
@@ -96,7 +108,7 @@
     },
     "mox_support": {
       "bank_service": 0.15815084062263396,
-      "bank_trustsec": 0.1794749692815178,
+      "bank_security_control": 0.1794749692815178,
       "bank_satisfaction": 0.14062600332729797,
       "bank_future": 0.0904045338201453,
       "mox_support": 1.0,
@@ -104,7 +116,7 @@
     },
     "ai_attitude": {
       "bank_service": 0.022414094556111378,
-      "bank_trustsec": -0.03422981324194321,
+      "bank_security_control": -0.03422981324194321,
       "bank_satisfaction": -0.025465745270456232,
       "bank_future": -0.000919251440141579,
       "mox_support": 0.031122094946484578,
@@ -114,15 +126,15 @@
   "correlation_n_matrix": {
     "bank_service": {
       "bank_service": 212,
-      "bank_trustsec": 212,
+      "bank_security_control": 212,
       "bank_satisfaction": 212,
       "bank_future": 212,
       "mox_support": 164,
       "ai_attitude": 212
     },
-    "bank_trustsec": {
+    "bank_security_control": {
       "bank_service": 212,
-      "bank_trustsec": 212,
+      "bank_security_control": 212,
       "bank_satisfaction": 212,
       "bank_future": 212,
       "mox_support": 164,
@@ -130,7 +142,7 @@
     },
     "bank_satisfaction": {
       "bank_service": 212,
-      "bank_trustsec": 212,
+      "bank_security_control": 212,
       "bank_satisfaction": 212,
       "bank_future": 212,
       "mox_support": 164,
@@ -138,7 +150,7 @@
     },
     "bank_future": {
       "bank_service": 212,
-      "bank_trustsec": 212,
+      "bank_security_control": 212,
       "bank_satisfaction": 212,
       "bank_future": 212,
       "mox_support": 164,
@@ -146,7 +158,7 @@
     },
     "mox_support": {
       "bank_service": 164,
-      "bank_trustsec": 164,
+      "bank_security_control": 164,
       "bank_satisfaction": 164,
       "bank_future": 164,
       "mox_support": 164,
@@ -154,7 +166,7 @@
     },
     "ai_attitude": {
       "bank_service": 212,
-      "bank_trustsec": 212,
+      "bank_security_control": 212,
       "bank_satisfaction": 212,
       "bank_future": 212,
       "mox_support": 164,
@@ -209,7 +221,7 @@
             0.5686508015542666
           ]
         },
-        "bank_trustsec": {
+        "bank_security_control": {
           "coef": 0.024453206624660218,
           "se_conventional_ols": 0.12144238910448324,
           "p_conventional_ols": 0.8406157101292662,
@@ -276,7 +288,7 @@
             0.8489330945292448
           ]
         },
-        "bank_trustsec": {
+        "bank_security_control": {
           "coef": 0.04196263020834945,
           "se_conventional_ols": 0.08479255692387513,
           "p_conventional_ols": 0.6212030954221356,
@@ -360,7 +372,7 @@
             0.3326927166176342
           ]
         },
-        "bank_trustsec": {
+        "bank_security_control": {
           "coef": 0.15719509737124845,
           "se_conventional_ols": 0.14547054892715156,
           "p_conventional_ols": 0.2815023467281012,
@@ -427,7 +439,7 @@
             3.749447227131984
           ]
         },
-        "centered_bank_trustsec": {
+        "centered_bank_security_control": {
           "coef": 0.17874874771394716,
           "se_conventional_ols": 0.06520729007256448,
           "p_conventional_ols": 0.00665364512316166,
@@ -484,35 +496,56 @@
   },
   "vif": {
     "Model A": {
-      "bank_service": 3.664473924354055,
-      "bank_trustsec": 3.664473924354057
+      "values": {
+        "bank_service": 3.664473924354055,
+        "bank_security_control": 3.664473924354057
+      },
+      "warnings": []
     },
     "Model B": {
-      "bank_satisfaction": 1.1045363637402685,
-      "bank_trustsec": 3.6651848044916076,
-      "bank_service": 3.7546453257099026
+      "values": {
+        "bank_satisfaction": 1.1045363637402685,
+        "bank_security_control": 3.6651848044916076,
+        "bank_service": 3.7546453257099026
+      },
+      "warnings": []
     },
     "Model C": {
-      "bank_satisfaction": 1.1045363637402685,
-      "bank_trustsec": 3.6651848044916076,
-      "bank_service": 3.7546453257099026
+      "values": {
+        "bank_satisfaction": 1.1045363637402685,
+        "bank_security_control": 3.6651848044916076,
+        "bank_service": 3.7546453257099026
+      },
+      "warnings": []
     },
     "Moderation": {
-      "centered_bank_trustsec": 1.0074894471387745,
-      "centered_ai_attitude": 1.0168379876699336,
-      "interaction": 1.022662304118844
+      "values": {
+        "centered_bank_security_control": 1.0074894471387745,
+        "centered_ai_attitude": 1.0168379876699336,
+        "interaction": 1.022662304118844
+      },
+      "warnings": []
     }
   },
   "cronbach_alpha": {
-    "bank_service_q10_5_items": 0.9093455416473494,
-    "bank_trustsec_q10_2_items": 0.8180481903679961,
-    "q10_all_7_items": 0.9344599262489581
+    "bank_service_q10_5_items": {
+      "alpha": 0.9093455416473494,
+      "n": 212
+    },
+    "bank_security_control_q10_2_items": {
+      "alpha": 0.8180481903679961,
+      "n": 212
+    },
+    "q10_all_7_items": {
+      "alpha": 0.9344599262489581,
+      "n": 212
+    }
   },
   "mediation": {
-    "Mediation A exploratory bank_service_to_bank_trustsec_to_bank_future": {
+    "Mediation A exploratory bank_service_to_bank_security_control_to_bank_future": {
       "n": 212,
       "x": "bank_service",
-      "mediator": "bank_trustsec",
+      "mediator": "bank_security_control",
       "y": "bank_future",
       "covariates": [],
       "a_path": {
@@ -538,18 +571,21 @@
         ],
         "normal_approximation_p": 0.6380994499495971,
         "normal_approximation_p_formatted": "p=0.638",
-        "primary_inference": "bootstrap confidence interval"
+        "primary_inference": "bootstrap percentile confidence interval"
       },
       "total_effect": {
         "coef": 0.19580950909184577,
         "p": 0.0055077807841125296,
         "p_formatted": "p=0.006"
       },
-      "bootstrap_reps": 5000
+      "bootstrap_requested": 5000,
+      "bootstrap_succeeded": 5000,
+      "bootstrap_failed": 0,
+      "bootstrap_success_rate": 1.0
     },
-    "Mediation B adjusted bank_trustsec_to_bank_satisfaction_to_bank_future_cov_bank_service": {
+    "Mediation B adjusted bank_security_control_to_bank_satisfaction_to_bank_future_cov_bank_service": {
       "n": 212,
-      "x": "bank_trustsec",
+      "x": "bank_security_control",
       "mediator": "bank_satisfaction",
       "y": "bank_future",
       "covariates": [
@@ -578,19 +614,22 @@
         ],
         "normal_approximation_p": 0.8475746345038866,
         "normal_approximation_p_formatted": "p=0.848",
-        "primary_inference": "bootstrap confidence interval"
+        "primary_inference": "bootstrap percentile confidence interval"
       },
       "total_effect": {
         "coef": 0.06030351345882068,
         "p": 0.6280847568602949,
         "p_formatted": "p=0.628"
       },
-      "bootstrap_reps": 5000
+      "bootstrap_requested": 5000,
+      "bootstrap_succeeded": 5000,
+      "bootstrap_failed": 0,
+      "bootstrap_success_rate": 1.0
     }
   },
   "mode": "canonical",
   "run_metadata": {
-    "run_time_utc": "2026-07-22T11:16:00.359134+00:00",
+    "run_time_utc": "2026-07-23T13:01:50.390014+00:00",
     "python_version": "3.13.5",
     "platform": "Windows",
     "random_seed": 20260325,
@@ -598,7 +637,8 @@
       "pandas": "3.0.0",
       "numpy": "2.2.6",
       "scipy": "1.17.1",
-      "statsmodels": "0.14.6"
+      "statsmodels": "0.14.6",
+      "matplotlib": "3.10.0"
     },
     "warnings": []
   },
@@ -607,17 +647,20 @@
     "size_bytes": null
   },
   "variable_definitions": {
-    "bank_service": "Mean of five Q10 service-performance items; higher means stronger perceived service performance.",
-    "bank_trustsec": "Mean of Q10 security perception and perceived control; higher means stronger perceived trust/security/control.",
-    "bank_satisfaction": "Q11 satisfaction item; higher means greater satisfaction.",
-    "bank_future": "Q11 future use intention item; higher means stronger future use intention.",
+    "bank_service": "Mean of five Q10 service-performance items; at least four valid items are required; higher values indicate stronger perceived service quality.",
+    "bank_security_control": "Mean of Q10 security perception and perceived control; higher values indicate stronger perceived security and control.",
+    "bank_satisfaction": "Q11 satisfaction item; higher values indicate greater satisfaction.",
+    "bank_trust_outcome": "Q11 trust item; supplementary single-item outcome only, not included in the main models.",
+    "bank_future": "Q11 future use intention item; higher values indicate stronger future use intention.",
     "mox_support_raw": "Q16 original coding, where 1 means strongly support and 5 means strongly oppose.",
-    "mox_support": "Reverse-coded Q16 as 6 - mox_support_raw; higher means stronger support.",
+    "mox_support": "Reverse-coded Q16 as 6 - mox_support_raw; higher values indicate stronger support.",
     "ai_attitude": "Q5 original coding: 1=very anxious/resistant, 2=somewhat uneasy, 3=neutral, 4=somewhat interested, 5=very excited."
   },
   "cleaning_rules": {
+    "worksheet": "Canonical mode reads Sheet1 explicitly.",
     "duration": "Keep responses at or above the 5th percentile duration threshold.",
     "attention": "Both attention checks must equal coding value 2.",
+    "composites": "bank_service requires at least four of five Q10 service items; bank_security_control requires both Q10 security/control items.",
     "privacy": "Raw responses and sensitive metadata are excluded from public outputs."
   },
   "sample_checks": {
