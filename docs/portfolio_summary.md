@@ -1,6 +1,6 @@
 # Portfolio Summary
 
-Mox Chatbot User Research is a PolyU x HKMA IPMN academic project about digital banking chatbot user experience. The project examines how users evaluate chatbot service quality, security and control, satisfaction, future use intention, and support for a proposed chatbot service context. Mox Bank is used as the project setting, but the analysis and recommendations are student project work rather than official statements by HKMA, PolyU, or Mox Bank.
+Mox Chatbot User Research is a PolyU × HKMA IPMN academic project about digital banking chatbot user experience. The project examines how users evaluate chatbot service quality, security and control, satisfaction, future use intention, and support for a proposed Mox chatbot service. Mox Bank is used as the project setting, but the analysis and recommendations are student project work rather than official statements by HKMA, PolyU, or Mox Bank.
 
 My main responsibility was the data-processing side of the project. I inspected the raw survey export, applied response-quality rules, cleaned and coded the variables, reverse-coded the Mox-support item, built the composite scores, handled missing values, and prepared the analysis-ready dataset. The public repository keeps the workflow reproducible while excluding raw respondent records, respondent metadata, open-ended responses, and private questionnaire files.
 

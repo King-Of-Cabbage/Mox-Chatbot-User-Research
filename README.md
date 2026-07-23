@@ -24,7 +24,7 @@ The project asks how perceived chatbot service quality is associated with satisf
 
 ## Method
 
-The analysis starts from 376 raw questionnaire responses. It applies a response-time screen and two attention checks, leaving a final quality sample of 232 responses. The main variables are a Q10 service-quality composite, a Q10 security-and-control composite, Q11 satisfaction, Q11 trust, Q11 future use intention, and a Q16 Mox-support item that is reverse-coded so higher values mean stronger support. The main models use OLS regression with HC3 robust inference, and the mediation analyses are exploratory.
+The analysis starts from 376 raw questionnaire responses. It applies a response-time screen and two attention checks, leaving a final quality sample of 232 responses. The main model variables are the Q10 service-quality composite, the Q10 security-and-control composite, Q11 satisfaction, Q11 future use intention, and the reverse-coded Q16 Mox-support item. The Q11 trust item is retained as a supplementary descriptive measure and is not included in the main regression models. The models use OLS regression with HC3 robust inference, and the mediation analyses are exploratory.
 
 ## Environment
 
@@ -93,6 +93,7 @@ Raw responses: 376. After duration screen: 360. Final quality sample: 232. The a
 | Service quality | `bank_service` | Q10 five-item service-quality composite | At least four items must be valid | Predictor |
 | Security and control | `bank_security_control` | Q10 security perception and perceived control composite | Both items must be valid | Predictor / exploratory mediator / moderator construct |
 | Satisfaction | `bank_satisfaction` | Q11 satisfaction single item | No cross-item imputation | Outcome in Model A; predictor in Models B and C |
+| Trust outcome | `bank_trust_outcome` | Q11 trust single item | No cross-item imputation | Supplementary descriptive measure; not included in the main models |
 | Future use | `bank_future` | Q11 future use intention single item | No cross-item imputation | Outcome in Model B and Moderation |
 | Mox support | `mox_support` | Q16 reverse-coded support item | `6 - mox_support_raw` | Outcome in Model C |
 | AI attitude | `ai_attitude` | Q5 original coding | 1 very anxious/resistant to 5 very excited | Moderation predictor |

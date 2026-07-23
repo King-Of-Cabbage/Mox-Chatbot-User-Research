@@ -5,18 +5,16 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def test_public_markdown_avoids_internal_or_machine_like_phrasing():
+def test_public_markdown_excludes_internal_review_markers():
     banned = [
-        "".join(["Chat", "GPT"]),
-        "".join(["Co", "dex"]),
-        "".join(["generated", " by ", "AI"]),
-        "".join(["AI", "-generated"]),
-        "".join(["as ", "an ", "AI"]),
         "".join(["release", "-ready ", "candidate"]),
         "".join(["Why Legacy", " Results Were ", "Replaced"]),
         "".join(["The wording here", " avoids ", "implying"]),
         "".join(["SHI", " ", "Wei", "kang"]),
         "".join(["PUBLICATION", " STATUS:", " NOT YET", " APPROVED"]),
+        "".join(["C:", "\\", "Users"]),
+        "".join(["Admin", "istrator"]),
+        "review_only",
     ]
     text = "\n".join(
         path.read_text(encoding="utf-8")
@@ -25,6 +23,19 @@ def test_public_markdown_avoids_internal_or_machine_like_phrasing():
     )
     for phrase in banned:
         assert phrase not in text
+
+
+def test_private_or_respondent_level_files_are_not_present():
+    forbidden_suffixes = {".xlsx", ".xls", ".docx", ".pdf", ".zip", ".rar", ".7z"}
+    skip_dirs = {".git", ".venv", ".venv-ci", ".venv-ci311", ".venv-ci312", "local_results", ".pytest_cache", "__pycache__"}
+    for path in ROOT.rglob("*"):
+        rel = path.relative_to(ROOT).as_posix()
+        if any(part in skip_dirs for part in path.relative_to(ROOT).parts):
+            continue
+        assert "review_only" not in rel
+        if path.is_file():
+            assert path.suffix.lower() not in forbidden_suffixes
+            assert "respondent" not in path.name.lower()
 
 
 def test_readme_uses_safe_canonical_command_placeholder():
