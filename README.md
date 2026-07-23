@@ -1,8 +1,16 @@
-# IPMN MOX Chatbot Service Analysis
+# Mox Chatbot User Research
 
-This is an independent academic case study. It is not affiliated with, commissioned by, or endorsed by Mox Bank.
+A PolyU × HKMA IPMN Academic Project
 
-This release-ready candidate contains a privacy-preserving analysis package for a team academic project about digital banking chatbot service quality. It does not include raw questionnaire exports, respondent-level records, respondent metadata, open-ended answers, original reports, or legacy figures.
+This is a student academic and industry project completed under the HKMA Industry Project Masters Network Scheme through The Hong Kong Polytechnic University. The analysis and recommendations represent the student contributors' work and do not constitute official statements or endorsements by HKMA, PolyU, or Mox Bank.
+
+This release-ready candidate contains a privacy-preserving analysis package for a team academic project about digital banking chatbot service quality. The project examines user perceptions and service-design considerations relating to digital banking chatbots, using Mox Bank as the project context. It does not include raw questionnaire exports, respondent-level records, respondent metadata, open-ended answers, original reports, or legacy figures.
+
+## Programme Context
+
+This project was completed through the Hong Kong Monetary Authority's Industry Project Masters Network (HKMA IPMN) Scheme by postgraduate students from the School of Accounting and Finance at The Hong Kong Polytechnic University.
+
+The repository documents the student contributors' research process, reproducible analysis, and project recommendations. The interpretations and conclusions presented here are those of the student contributors and should not be treated as official statements, policies, or endorsements by the Hong Kong Monetary Authority, The Hong Kong Polytechnic University, or Mox Bank.
 
 ## Project Attribution
 
