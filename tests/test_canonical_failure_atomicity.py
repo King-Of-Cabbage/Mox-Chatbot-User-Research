@@ -1,6 +1,7 @@
 import pandas as pd
+import pytest
 
-from src.run_analysis import FIELD_REGISTRY, run_analysis
+from src.run_analysis import FIELD_REGISTRY, _atomic_output, run_analysis
 
 
 def test_canonical_failure_does_not_overwrite_existing_output(tmp_path):
@@ -19,3 +20,27 @@ def test_canonical_failure_does_not_overwrite_existing_output(tmp_path):
         pass
     assert sentinel.read_text(encoding="utf-8") == "sentinel"
     assert not (out / "tables").exists()
+
+
+def test_atomic_output_restores_existing_directory_if_replacement_fails(tmp_path, monkeypatch):
+    out = tmp_path / "out"
+    out.mkdir()
+    sentinel = out / "keep.txt"
+    sentinel.write_text("sentinel", encoding="utf-8")
+
+    original_replace = type(out).replace
+    calls = {"count": 0}
+
+    def flaky_replace(self, target):
+        calls["count"] += 1
+        result = original_replace(self, target)
+        if calls["count"] == 2:
+            raise OSError("simulated replacement failure")
+        return result
+
+    monkeypatch.setattr(type(out), "replace", flaky_replace)
+
+    with pytest.raises(OSError):
+        _atomic_output(out, lambda tmp: (tmp / "new.txt").write_text("new", encoding="utf-8"))
+
+    assert sentinel.read_text(encoding="utf-8") == "sentinel"

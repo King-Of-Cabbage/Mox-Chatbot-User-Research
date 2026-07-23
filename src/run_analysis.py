@@ -2,7 +2,6 @@ import argparse
 import hashlib
 import json
 import math
-import os
 import platform
 import re
 import shutil
@@ -194,20 +193,29 @@ def parse_duration_seconds(value):
             return np.nan if seconds >= 60 else float(minutes * 60 + seconds)
         hours, minutes, seconds = parts
         return np.nan if minutes >= 60 or seconds >= 60 else float(hours * 3600 + minutes * 60 + seconds)
+    duration_unit_pattern = re.compile(
+        r"(?P<num>\d+(?:\.\d+)?)\s*(?P<unit>hours|hour|hrs|hr|h|小时|小時|时|時|minutes|minute|mins|min|m|分钟|分鐘|分|seconds|second|secs|sec|s|秒)"
+    )
+    pos = 0
     total = 0.0
     matched = False
-    pattern = re.compile(
-        r"(\d+(?:\.\d+)?)\s*(小时|小時|时|時|h|hr|hrs|hour|hours|分钟|分鐘|分|m|min|mins|minute|minutes|秒|s|sec|secs|second|seconds)"
-    )
-    for num, unit in pattern.findall(text):
+    for match in duration_unit_pattern.finditer(text):
+        if text[pos : match.start()].strip():
+            return np.nan
+        val = float(match.group("num"))
+        unit = match.group("unit")
+        if val < 0 or not math.isfinite(val):
+            return np.nan
         matched = True
-        val = float(num)
         if unit in {"小时", "小時", "时", "時", "h", "hr", "hrs", "hour", "hours"}:
             total += val * 3600
         elif unit in {"分钟", "分鐘", "分", "m", "min", "mins", "minute", "minutes"}:
             total += val * 60
         else:
             total += val
+        pos = match.end()
+    if text[pos:].strip():
+        return np.nan
     return total if matched and math.isfinite(total) and total >= 0 else np.nan
 
 
@@ -224,7 +232,7 @@ def validate_duration_series(series):
     return parsed
 
 
-def validate_likert_series(series, safe_name, allowed_range=(1, 5)):
+def validate_likert_series(series, safe_name, allowed_range=(1, 5), integer_only=False):
     nonempty = series.notna() & (series.astype(str).str.strip() != "")
     numeric = pd.to_numeric(series, errors="coerce")
     invalid_text = nonempty & numeric.isna()
@@ -237,6 +245,10 @@ def validate_likert_series(series, safe_name, allowed_range=(1, 5)):
     out_of_range = numeric.notna() & ~numeric.between(lo, hi)
     if out_of_range.any():
         raise AnalysisValidationError(f"Out-of-range values in {safe_name}: count={int(out_of_range.sum())}")
+    if integer_only:
+        decimals = numeric.notna() & (numeric % 1 != 0)
+        if decimals.any():
+            raise AnalysisValidationError(f"Non-integer Likert values in {safe_name}: count={int(decimals.sum())}")
     return numeric
 
 
@@ -422,13 +434,13 @@ def prepare_canonical(path):
     duration = validate_duration_series(raw[mapping["duration"]])
     threshold = float(np.percentile(duration.dropna(), 5))
     time_keep = duration >= threshold
-    att21 = validate_likert_series(raw[mapping["attention21"]], "attention21") == 2
-    att26 = validate_likert_series(raw[mapping["attention26"]], "attention26") == 2
+    att21 = validate_likert_series(raw[mapping["attention21"]], "attention21", integer_only=True) == 2
+    att26 = validate_likert_series(raw[mapping["attention26"]], "attention26", integer_only=True) == 2
     keep = time_keep & att21 & att26
     df = pd.DataFrame(index=raw.index)
     for key, col in mapping.items():
         if key not in {"duration", "attention21", "attention26"}:
-            df[key] = validate_likert_series(raw[col], key)
+            df[key] = validate_likert_series(raw[col], key, integer_only=True)
     service_items = ["q10_reliability", "q10_ease", "q10_response", "q10_solve", "q10_natural"]
     security_items = ["q10_security", "q10_control"]
     df["duration_seconds"] = duration
@@ -521,16 +533,6 @@ def run_models(df, mode):
     return metrics
 
 
-def sig_star(p):
-    if p < 0.001:
-        return "***"
-    if p < 0.01:
-        return "**"
-    if p < 0.05:
-        return "*"
-    return ""
-
-
 def plot_sample_screening(checks, path):
     fig, ax = plt.subplots(figsize=(7.5, 4.8), constrained_layout=False)
     labels = ["Raw responses", "Duration-screened", "Final quality sample"]
@@ -617,7 +619,7 @@ def plot_model_coefficients(metrics, model_name, title, path):
     ax.set_xlim(xmin - 0.22 * span, xmax + 0.34 * span)
     for coef, yy, term in zip(coefs, y, terms):
         p = model["params"][term]["robust_p_hc3"]
-        text = f"beta={coef:.2f}, {p_fmt(p)}{sig_star(p)}"
+        text = f"β={coef:.2f}, {p_fmt(p)}"
         right_x = coef + 0.035 * span
         if right_x > ax.get_xlim()[1] - 0.18 * span:
             ax.annotate(text, (coef, yy), xytext=(-8, 0), textcoords="offset points", ha="right", va="center", fontsize=8.5)
@@ -703,9 +705,7 @@ def save_outputs(metrics, out, mode, checks, audit=None):
             rows.append(row)
     pd.DataFrame(rows).to_csv(tables / "model_coefficients.csv", index=False, encoding="utf-8-sig")
     if audit is not None and not audit.empty:
-        local = out.parent / "local_results"
-        local.mkdir(exist_ok=True)
-        audit.to_csv(local / "composite_missingness_audit.csv", index=False, encoding="utf-8-sig")
+        audit.to_csv(tables / "composite_missingness_audit.csv", index=False, encoding="utf-8-sig")
     make_figures(metrics, figs, mode, checks)
 
 
@@ -714,9 +714,9 @@ def _atomic_output(output_dir, writer):
     parent = output_dir.parent
     parent.mkdir(parents=True, exist_ok=True)
     tmp = Path(tempfile.mkdtemp(prefix=output_dir.name + "_tmp_", dir=parent))
+    backup = None
     try:
         writer(tmp)
-        backup = None
         if output_dir.exists():
             backup = Path(tempfile.mkdtemp(prefix=output_dir.name + "_old_", dir=parent))
             backup.rmdir()
@@ -726,6 +726,13 @@ def _atomic_output(output_dir, writer):
             shutil.rmtree(backup)
     except Exception:
         shutil.rmtree(tmp, ignore_errors=True)
+        if backup and backup.exists():
+            if output_dir.exists():
+                if output_dir.is_dir():
+                    shutil.rmtree(output_dir)
+                else:
+                    output_dir.unlink()
+            backup.replace(output_dir)
         raise
 
 

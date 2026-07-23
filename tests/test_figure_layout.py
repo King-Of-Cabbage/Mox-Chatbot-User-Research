@@ -19,3 +19,13 @@ def test_public_figures_have_required_size_and_pixels():
         assert img.shape[1] >= min_w
         assert img.shape[0] >= min_h
         assert float(np.std(img[..., :3])) > 0.01
+        edge = np.concatenate(
+            [
+                img[:10, :, :3].reshape(-1, 3),
+                img[-10:, :, :3].reshape(-1, 3),
+                img[:, :10, :3].reshape(-1, 3),
+                img[:, -10:, :3].reshape(-1, 3),
+            ]
+        )
+        assert float(edge.mean()) > 0.90
+        assert float(np.std(edge)) < 0.15

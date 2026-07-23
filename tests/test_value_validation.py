@@ -14,3 +14,13 @@ def test_likert_rejects_bad_values():
     for values in ([0], [6], ["bad"], [np.inf], [-np.inf]):
         with pytest.raises(AnalysisValidationError):
             validate_likert_series(pd.Series(values), "x")
+
+
+def test_raw_likert_integer_only_rejects_decimal_values():
+    with pytest.raises(AnalysisValidationError):
+        validate_likert_series(pd.Series([1, 2.5, 5]), "raw_item", integer_only=True)
+
+
+def test_demo_composite_likert_accepts_decimal_values():
+    out = validate_likert_series(pd.Series([1, 3.5, 5]), "demo_composite", integer_only=False)
+    assert out.tolist() == [1, 3.5, 5]

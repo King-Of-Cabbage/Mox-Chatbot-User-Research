@@ -1,6 +1,6 @@
 # Construct Map
 
-This map separates the Q10 security/control construct from the Q11 trust outcome. They are not interchangeable, and they should not both be described generically as trust.
+This map separates the Q10 security/control construct from the Q11 trust outcome. They are not interchangeable and should not both be described generically as trust.
 
 | Public variable | Source | Item meaning | Item count | Scoring | Model role | Main model? |
 |---|---|---|---:|---|---|---|
