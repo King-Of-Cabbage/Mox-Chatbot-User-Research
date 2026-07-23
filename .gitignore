@@ -16,3 +16,7 @@ raw/
 private/
 sensitive/
 local_results/
+.venv/
+.venv-ci/
+.venv-ci311/
+.venv-ci312/

@@ -1,6 +1,6 @@
 # Mox Chatbot User Research
 
-A PolyU ? HKMA IPMN Academic Project
+A PolyU × HKMA IPMN Academic Project
 
 This is a student academic and industry project completed under the HKMA Industry Project Masters Network Scheme through The Hong Kong Polytechnic University. The analysis and recommendations represent the student contributors' work and do not constitute official statements or endorsements by HKMA, PolyU, or Mox Bank.
 
@@ -50,7 +50,7 @@ source .venv/bin/activate
 
 ```bash
 pip install -r requirements.txt
-pytest -q
+python -m pytest -q
 python scripts/validate_release_tree.py .
 ```
 
@@ -118,7 +118,7 @@ The correlation heatmap uses pairwise-complete observations. Pairs involving `mo
   <img src="results/figures/05_model_b_coef_ci.png" alt="Model B coefficient plot" width="850">
 </p>
 
-| Model | Dependent variable | n | R? | HC3 overall test | Core HC3 result | Boundary |
+| Model | Dependent variable | n | R² | HC3 overall test | Core HC3 result | Boundary |
 |---|---:|---:|---:|---|---|---|
 | A | bank_satisfaction | 212 | 0.095 | F=8.712, p<0.001 | bank_service coef=0.297, p=0.033; bank_security_control coef=0.024, p=0.850 | Explanatory power is limited. |
 | B | bank_future | 212 | 0.554 | F=84.103, p<0.001 | bank_satisfaction coef=0.750, p<0.001 | Association, not causal proof. |

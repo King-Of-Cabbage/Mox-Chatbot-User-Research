@@ -7,6 +7,7 @@ TEXT_EXTS = {".md", ".py", ".json", ".csv", ".ipynb", ".txt", ".gitignore", ".ym
 CACHE_NAMES = {".pytest_cache", "__pycache__"}
 TEMP_SUFFIXES = {".pyc", ".log", ".tmp"}
 FORBIDDEN_SUFFIXES = {".xlsx", ".xls", ".docx", ".pdf", ".zip", ".rar", ".7z"}
+SKIP_DIR_NAMES = {".git", ".venv", ".venv-ci", ".venv-ci311", ".venv-ci312", "local_results"}
 
 
 def _join(*parts):
@@ -41,7 +42,8 @@ def validate(root: Path):
     root = root.resolve()
     for path in root.rglob("*"):
         rel = path.relative_to(root).as_posix()
-        if ".git/" in rel or rel == ".git":
+        parts = set(path.relative_to(root).parts)
+        if parts & SKIP_DIR_NAMES:
             continue
         if path.name == "review_only":
             findings.append({"type": "review-only material", "path": rel})
