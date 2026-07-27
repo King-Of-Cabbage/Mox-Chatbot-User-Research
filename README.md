@@ -32,10 +32,16 @@ The analysis starts from 376 raw questionnaire responses. It applies a response-
 python -m venv .venv
 ```
 
-Windows:
+Windows PowerShell:
 
-```bash
-.venv\Scripts\activate
+```powershell
+.\.venv\Scripts\Activate.ps1
+```
+
+Windows Command Prompt:
+
+```cmd
+.venv\Scripts\activate.bat
 ```
 
 macOS/Linux:
@@ -46,25 +52,32 @@ source .venv/bin/activate
 
 ```bash
 pip install -r requirements.txt
+```
+
+Check the local environment:
+
+```bash
 python -m pytest -q
 python scripts/validate_release_tree.py .
 ```
 
 ## Run
 
-Demo mode uses only synthetic aggregate variables:
+Demo mode uses only synthetic aggregate variables. It checks that the pipeline can run, but it does not reproduce the empirical coefficients from the private questionnaire:
 
 ```bash
 python src/run_analysis.py --mode demo --input data/synthetic_example.csv --output local_results/demo
 ```
 
-Canonical mode requires a private local questionnaire file:
+Canonical mode requires the private local questionnaire file and is the route used to generate the public aggregate results:
 
 ```bash
 python src/run_analysis.py --mode canonical --input path/to/private_questionnaire.xlsx --output local_results/canonical
 ```
 
 Optional provenance checks can be written only when an explicit provenance output path is provided. Do not commit private questionnaire files, questionnaire hashes, or local run outputs.
+
+The committed files under `results/` are aggregate outputs from the canonical analysis. The respondent-level source data cannot be published, so reviewers without the private questionnaire can run the synthetic demo and tests, inspect the code, and review the aggregate tables and figures.
 
 ## Directory Guide
 

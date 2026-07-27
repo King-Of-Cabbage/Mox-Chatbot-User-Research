@@ -43,6 +43,22 @@ def test_readme_uses_safe_canonical_command_placeholder():
     assert "path/to/private_questionnaire.xlsx" in readme
     assert "<private_questionnaire.xlsx>" not in readme
     assert "--input  --output" not in readme
+    assert ".\\.venv\\Scripts\\Activate.ps1" in readme
+    assert ".venv\\Scripts\\activate.bat" in readme
+    assert ".venv\\S cripts\\a ctivate" not in readme
+    assert "python src/run_analysis.py --mode demo --input data/synthetic_example.csv --output local_results/demo" in readme
+    assert (
+        "python src/run_analysis.py --mode canonical --input path/to/private_questionnaire.xlsx --output local_results/canonical"
+        in readme
+    )
+
+
+def test_public_text_separates_synthetic_demo_from_empirical_results():
+    readme = (ROOT / "README.md").read_text(encoding="utf-8")
+    data_readme = (ROOT / "data" / "README.md").read_text(encoding="utf-8")
+    assert "does not reproduce the empirical coefficients" in readme
+    assert "respondent-level source data cannot be published" in readme
+    assert "is not a sample from the real questionnaire" in data_readme
 
 
 def test_notebook_is_public_safe_and_demo_first():

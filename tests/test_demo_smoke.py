@@ -19,13 +19,13 @@ def test_demo_smoke(tmp_path):
         "Moderation": 32,
     }
     assert "bank_security_control" in metrics["models"]["Model A"]["params"]
-    snapshots = {
+    expected_coefficients = {
         ("Model A", "bank_security_control"): 0.18988535063546952,
         ("Model B", "bank_satisfaction"): 0.1254698341468792,
         ("Model C", "bank_service"): 0.15391806249384216,
         ("Moderation", "interaction"): -0.5984828627132822,
     }
-    for (model_name, term), expected in snapshots.items():
+    for (model_name, term), expected in expected_coefficients.items():
         observed = metrics["models"][model_name]["params"][term]["coef"]
         assert math.isclose(observed, expected, rel_tol=1e-10, abs_tol=1e-10)
     assert ("bank_" + "trustsec") not in json.dumps(metrics)
