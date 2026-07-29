@@ -12,12 +12,6 @@ The analysis and recommendations in this repository are student project work. Th
 
 This project was completed as a two-person academic collaboration by LIN Junyu and SHI.
 
-## Personal Contribution
-
-I drafted and refined approximately half of the questionnaire content, while SHI designed the branching and response logic. I independently cleaned and prepared the survey data, including response-quality screening, variable coding, composite scoring, and the final analysis dataset.
-
-The model framework and specifications were discussed jointly. We shared the report writing, while SHI led the visualisation work. In the final presentation, I covered the research design, data processing, and empirical findings; SHI presented the recommendations and implementation plan.
-
 ## Business Question
 
 The project asks how perceived chatbot service quality is associated with satisfaction, future use intention, and support for a proposed digital banking chatbot feature.
@@ -58,7 +52,7 @@ Check the local environment:
 
 ```bash
 python -m pytest -q
-python scripts/validate_release_tree.py .
+python scripts/validate_data_boundaries.py .
 ```
 
 ## Run
@@ -85,9 +79,9 @@ The committed files under `results/` are aggregate outputs from the canonical an
 - `notebooks`: notebook wrapper that runs the synthetic demo by default.
 - `data`: data dictionary and synthetic example data.
 - `results`: aggregate result tables and public figures from the canonical analysis.
-- `docs`: methodology notes, limitations, construct map, and portfolio summary.
-- `tests`: checks for the demo run, figures, notebook state, text quality, and public-repo cleanliness.
-- `scripts`: release-tree validation before packaging or publishing.
+- `docs`: methodology notes, limitations, and construct map.
+- `tests`: checks for the demo run, figures, notebook state, text quality, and public data boundaries.
+- `scripts`: data-boundary validation for public files.
 
 ## Privacy And Sample Screening
 

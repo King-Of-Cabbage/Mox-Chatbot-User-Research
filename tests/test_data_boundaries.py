@@ -1,9 +1,9 @@
 from pathlib import Path
 
-from scripts.validate_release_tree import validate
+from scripts.validate_data_boundaries import validate
 
 
-def test_public_repo_has_no_sensitive_release_findings():
+def test_public_files_have_no_sensitive_data_boundary_findings():
     root = Path(__file__).resolve().parents[1]
     findings = validate(root)
     runtime_types = {"runtime cache", "temporary artifact"}

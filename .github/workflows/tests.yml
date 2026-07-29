@@ -54,5 +54,5 @@ jobs:
           if cache.exists():
               shutil.rmtree(cache)
 
-      - name: Validate release tree
-        run: python scripts/validate_release_tree.py .
+      - name: Validate data boundaries
+        run: python scripts/validate_data_boundaries.py .

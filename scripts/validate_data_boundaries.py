@@ -27,7 +27,7 @@ def checks():
         ("desktop path", re.compile(re.escape("\\") + r"Desk" + "top" + re.escape("\\"))),
         ("education identifier marker", re.compile(student_label + r"|" + "student" + r"\s*" + "id" + r"|" + "student" + "_" + "id", re.I)),
         ("coauthor full name", re.compile(coauthor_full, re.I)),
-        ("release status marker", re.compile(status_marker)),
+        ("non-public status marker", re.compile(status_marker)),
         ("survey ip metadata", re.compile(respondent_ip + r"|respondent\s*ip", re.I)),
         ("survey time metadata", re.compile(submission_time + r"|submission\s*timestamp", re.I)),
         ("survey source metadata", re.compile(source_detail + r"|source\s*detail", re.I)),
@@ -62,7 +62,7 @@ def validate(root: Path):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="Validate a release tree before packaging.")
+    parser = argparse.ArgumentParser(description="Validate public files for data-boundary issues.")
     parser.add_argument("path")
     args = parser.parse_args()
     root = Path(args.path).resolve()
