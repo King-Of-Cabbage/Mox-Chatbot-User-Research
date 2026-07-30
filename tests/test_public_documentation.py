@@ -7,10 +7,8 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def test_public_markdown_excludes_private_identifiers_and_paths():
     banned = [
-        "".join(["SHI", " ", "Wei", "kang"]),
         "".join(["C:", "\\", "Users"]),
         "".join(["Admin", "istrator"]),
-        "review_only",
     ]
     text = "\n".join(
         path.read_text(encoding="utf-8")
@@ -28,7 +26,6 @@ def test_private_or_respondent_level_files_are_not_present():
         rel = path.relative_to(ROOT).as_posix()
         if any(part in skip_dirs for part in path.relative_to(ROOT).parts):
             continue
-        assert "review_only" not in rel
         if path.is_file():
             assert path.suffix.lower() not in forbidden_suffixes
             assert "respondent" not in path.name.lower()

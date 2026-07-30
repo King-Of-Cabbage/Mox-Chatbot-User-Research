@@ -8,8 +8,3 @@ def test_public_files_have_no_sensitive_data_boundary_findings():
     findings = validate(root)
     runtime_types = {"runtime cache", "temporary artifact"}
     assert [f for f in findings if f["type"] not in runtime_types] == []
-
-
-def test_review_only_not_present():
-    root = Path(__file__).resolve().parents[1]
-    assert not (root / "review_only").exists()

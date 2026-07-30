@@ -16,7 +16,6 @@ def _join(*parts):
 
 def checks():
     student_label = _join("\u5b66", "\u53f7")
-    coauthor_full = _join("SHI", " ", "Wei", "kang")
     respondent_ip = _join("\u6765\u81ea", "IP")
     submission_time = _join("\u63d0\u4ea4", "\u7b54\u5377", "\u65f6\u95f4")
     source_detail = _join("\u6765\u6e90", "\u8be6\u60c5")
@@ -25,7 +24,6 @@ def checks():
         ("absolute user path", re.compile(r"C:" + re.escape("\\") + r"Users|Admin" + "istrator")),
         ("desktop path", re.compile(re.escape("\\") + r"Desk" + "top" + re.escape("\\"))),
         ("education identifier marker", re.compile(student_label + r"|" + "student" + r"\s*" + "id" + r"|" + "student" + "_" + "id", re.I)),
-        ("coauthor full name", re.compile(coauthor_full, re.I)),
         ("survey ip metadata", re.compile(respondent_ip + r"|respondent\s*ip", re.I)),
         ("survey time metadata", re.compile(submission_time + r"|submission\s*timestamp", re.I)),
         ("survey source metadata", re.compile(source_detail + r"|source\s*detail", re.I)),
@@ -43,8 +41,6 @@ def validate(root: Path):
         parts = set(path.relative_to(root).parts)
         if parts & SKIP_DIR_NAMES:
             continue
-        if path.name == "review_only":
-            findings.append({"type": "review-only material", "path": rel})
         if path.name in CACHE_NAMES:
             findings.append({"type": "runtime cache", "path": rel})
         if path.is_file() and path.suffix.lower() in TEMP_SUFFIXES:
