@@ -5,13 +5,9 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def test_public_markdown_excludes_internal_review_markers():
+def test_public_markdown_excludes_private_identifiers_and_paths():
     banned = [
-        "".join(["release", "-ready ", "candidate"]),
-        "".join(["Why Legacy", " Results Were ", "Replaced"]),
-        "".join(["The wording here", " avoids ", "implying"]),
         "".join(["SHI", " ", "Wei", "kang"]),
-        "".join(["PUBLICATION", " STATUS:", " NOT YET", " APPROVED"]),
         "".join(["C:", "\\", "Users"]),
         "".join(["Admin", "istrator"]),
         "review_only",

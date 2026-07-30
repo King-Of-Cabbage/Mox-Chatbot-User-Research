@@ -10,7 +10,7 @@ The analysis and recommendations in this repository are student project work. Th
 
 ## Project Attribution
 
-This project was completed as a two-person academic collaboration by LIN Junyu and SHI.
+This project was completed by a two-person student team.
 
 ## Business Question
 
@@ -63,29 +63,29 @@ Demo mode uses only synthetic aggregate variables. It checks that the pipeline c
 python src/run_analysis.py --mode demo --input data/synthetic_example.csv --output local_results/demo
 ```
 
-Canonical mode requires the private local questionnaire file and is the route used to generate the public aggregate results:
+The private-data run requires the local questionnaire file and is the route used to generate the public aggregate results:
 
 ```bash
 python src/run_analysis.py --mode canonical --input path/to/private_questionnaire.xlsx --output local_results/canonical
 ```
 
-Optional provenance checks can be written only when an explicit provenance output path is provided. Do not commit private questionnaire files, questionnaire hashes, or local run outputs.
+Do not commit private questionnaire files, questionnaire hashes, or local run outputs.
 
-The committed files under `results/` are aggregate outputs from the canonical analysis. The respondent-level source data cannot be published, so reviewers without the private questionnaire can run the synthetic demo and tests, inspect the code, and review the aggregate tables and figures.
+The committed files under `results/` are aggregate outputs from the private questionnaire analysis. The respondent-level source data cannot be published, so reviewers without the private questionnaire can run the synthetic demo and tests, inspect the code, and review the aggregate tables and figures.
 
 ## Directory Guide
 
-- `src`: analysis code for canonical and demo modes.
+- `src`: analysis code for private-data and demo runs.
 - `notebooks`: notebook wrapper that runs the synthetic demo by default.
 - `data`: data dictionary and synthetic example data.
-- `results`: aggregate result tables and public figures from the canonical analysis.
+- `results`: aggregate result tables and public figures from the private questionnaire analysis.
 - `docs`: methodology notes, limitations, and construct map.
-- `tests`: checks for the demo run, figures, notebook state, text quality, and public data boundaries.
+- `tests`: checks for the demo run, figures, notebook state, documentation, and public data boundaries.
 - `scripts`: data-boundary validation for public files.
 
 ## Privacy And Sample Screening
 
-Canonical analysis requires a private questionnaire file. Public outputs contain only derived variables, aggregate tables, model summaries, figures, and synthetic demo data.
+The full questionnaire analysis requires a private questionnaire file. Public outputs contain only derived variables, aggregate tables, model summaries, figures, and synthetic demo data.
 
 <p align="center">
   <img src="results/figures/01_sample_screening.png" alt="Sample screening" width="850">
